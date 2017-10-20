@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="Changename" Height="417.333" Width="463">
     <Grid Margin="0,0,3.333,5">
-        <Button x:Name="AddUserButton" Content="Add new user" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="82" Height="25" Click="AddUserButton_Click"/>
-        <TextBox x:Name="WriteUserName" HorizontalAlignment="Left" Height="23" Margin="13,32,0,0" TextWrapping="Wrap" Text="Write user name" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="UserList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="10,122,0,0" VerticalAlignment="Top" Width="123"/>
+        <Button x:Name="AddUserButton" Content="Add new user" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="82" Height="25" Click="AddUserButton_Click" IsEnabled="False"/>
+        <TextBox x:Name="WriteUserName" HorizontalAlignment="Left" Height="23" Margin="13,32,0,0" TextWrapping="Wrap" Text="Write username" VerticalAlignment="Top" Width="120" TextChanged="WriteUserName_TextChanged"/>
+        <ListBox x:Name="UserList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="10,122,0,0" VerticalAlignment="Top" Width="123" SelectionChanged="UserList_SelectionChanged"/>
         <TextBox x:Name="WriteEmail" HorizontalAlignment="Left" Height="23" Margin="138,32,0,0" TextWrapping="Wrap" Text="Write email here" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ChangeUserButton" Content="Change user" HorizontalAlignment="Left" Margin="97,74,0,0" VerticalAlignment="Top" Width="82" Height="21"/>
-        <Button x:Name="DeleteUserButton" Content="Delete user" HorizontalAlignment="Left" Margin="184,73,0,0" VerticalAlignment="Top" Width="82" Height="23" RenderTransformOrigin="-0.138,-1.31"/>
+        <Button x:Name="EditUserButton" Content="Edit user" HorizontalAlignment="Left" Margin="97,74,0,0" VerticalAlignment="Top" Width="82" Height="21" Click="EditUserButton_Click"/>
+        <Button x:Name="DeleteUserButton" Content="Delete user" HorizontalAlignment="Left" Margin="184,73,0,0" VerticalAlignment="Top" Width="82" Height="23" RenderTransformOrigin="-0.138,-1.31" Click="DeleteUserButton_Click" IsEnabled="False"/>
         <ListBox x:Name="AdminList" HorizontalAlignment="Left" Height="132" Margin="298,122,0,0" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="UserInfo" Content="User info" HorizontalAlignment="Left" Margin="156,288,0,0" VerticalAlignment="Top" Width="72"/>
         <Button x:Name="ChangeToAdminButton" Content=" Change to admin &gt;&gt;" HorizontalAlignment="Left" Margin="156,171,0,0" VerticalAlignment="Top" Width="120"/>

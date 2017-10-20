@@ -47,9 +47,46 @@ namespace Lab5__WPF_application
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(WriteUserName.Text !="" && WriteEmail.Text!="")
             UserList.Items.Add(new User(WriteUserName.Text,WriteEmail.Text));
         }
 
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserList.SelectedIndex >= 0)
+            {
+
+                int postition = UserList.SelectedIndex;
+                UserList.Items.RemoveAt(postition);
+
+                if (UserList.Items.Count <= postition)
+                    UserList.SelectedIndex = postition - 1;
+                else
+                    UserList.SelectedIndex = postition;
+            }
+        }
+
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            bool canRemove = UserList.SelectedIndex >= 0;
+            DeleteUserButton.IsEnabled = canRemove;
+        }
+
+        private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (WriteUserName.Text.Contains("Write username") || WriteUserName.Text=="")
+                AddUserButton.IsEnabled = false;
+            else
+                AddUserButton.IsEnabled = true;
+        }
+
+        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
+
+            
+
+
+        }
     }
 }
