@@ -23,6 +23,33 @@ namespace Lab5__WPF_application
         public MainWindow()
         {
             InitializeComponent();
+
+     
+
+            List<User> user = new List<User>
+            {
+               //new User("Molyn", "molyn@gmail.com"),
+               //new User("Camilla", "camilla@hotmail.com"),
+               //new User("John", "john@gmail.com"),
+               //new User("Silvio", "silvio@hotmail.com"),
+               //new User("Sylvester","sylvester@gmail.com")
+
+            };
+
+            List<User> administrator = new List<User>
+            {
+                //new User("Ragnar","ragnar@hotmail.com"),
+                //new User("Ulla-Bella", "ub@gmail.com")
+            };
+
+
         }
+
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            UserList.Items.Add(new User(WriteUserName.Text,WriteEmail.Text));
+        }
+
     }
 }
