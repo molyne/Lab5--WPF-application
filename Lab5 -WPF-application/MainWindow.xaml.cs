@@ -64,12 +64,34 @@ namespace Lab5__WPF_application
                 else
                     UserList.SelectedIndex = postition;
             }
+            if (AdminList.SelectedIndex >= 0)
+            {
+
+                int postition = AdminList.SelectedIndex;
+                AdminList.Items.RemoveAt(postition);
+
+                if (AdminList.Items.Count <= postition)
+                    AdminList.SelectedIndex = postition - 1;
+                else
+                    AdminList.SelectedIndex = postition;
+            }
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool canRemove = UserList.SelectedIndex >= 0;
-            DeleteUserButton.IsEnabled = canRemove;
+            bool canClick = UserList.SelectedIndex >= 0;
+            DeleteUserButton.IsEnabled = canClick;
+
+            ChangeToAdminButton.IsEnabled = canClick;
+
+
+        }
+
+        private void AdminList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            bool canClick = AdminList.SelectedIndex >= 0;
+            ChangeToUser.IsEnabled = canClick;
+            DeleteUserButton.IsEnabled = canClick;
         }
 
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
@@ -88,5 +110,32 @@ namespace Lab5__WPF_application
 
 
         }
+
+        private void ChangeToAdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserList.SelectedIndex >= 0)
+            {
+               
+
+                var selected = UserList.SelectedItem; // sparar vad man har valt så det inte försvinner när man tar bort det.
+                UserList.Items.RemoveAt(UserList.SelectedIndex); 
+                AdminList.Items.Add(selected); 
+
+            }
+        }
+
+        private void ChangeToUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (AdminList.SelectedIndex >= 0)
+            {
+               
+                var selected = AdminList.SelectedItem; // sparar vad man har valt så det inte försvinner när man tar bort det.
+                AdminList.Items.RemoveAt(AdminList.SelectedIndex);
+                UserList.Items.Add(selected);
+
+            }
+        }
+
+      
     }
 }
