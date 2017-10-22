@@ -45,9 +45,12 @@ namespace Lab5__WPF_application
             UserInfo.Content = "Username: \nEmail:";
         }
 
-      // ATT LÖSA: 
+      // TO-DO
       // När man trycker på edit så läggs en till användare till istället för att ändra på den markerade
-      // Ta bort texten i e-mail fältet när man trycker på tab?
+      // när man markerar en användare skall adduserbutton vara disable
+      // när man lagt till en användare skall textboxarna bli tomma eller återgå till texten från början
+      // jag gjorde privata bools och la dom utanför, vara konsekventa
+   
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         { 
@@ -85,6 +88,7 @@ namespace Lab5__WPF_application
 
 
             if (UserList.SelectedIndex >= 0)
+
             {
 
                 if (UserList.SelectedItem != null)
@@ -92,6 +96,7 @@ namespace Lab5__WPF_application
                     UserInfo.Content = "Username: " +
 
                         ((User)UserList.SelectedItem).UserName + "\nEmail: " + ((User)UserList.SelectedItem).EmailAddress;
+                    AddUserButton.IsEnabled = false;
                 }
 
             }
@@ -105,6 +110,8 @@ namespace Lab5__WPF_application
             ChangeToAdminButton.IsEnabled = canClick;
 
             EditUserButton.IsEnabled = canClick;
+
+            
 
 
         }
@@ -132,6 +139,7 @@ namespace Lab5__WPF_application
             ChangeToUser.IsEnabled = canClick;
             DeleteUserButton.IsEnabled = canClick;
             EditUserButton.IsEnabled = canClick;
+           
         }
 
         private bool checkTextBoxUserName;
