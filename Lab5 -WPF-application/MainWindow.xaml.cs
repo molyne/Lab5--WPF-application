@@ -45,12 +45,13 @@ namespace Lab5__WPF_application
             UserInfo.Content = "Username: \nEmail:";
         }
 
-      
+      // ATT LÖSA: 
+      // När man trycker på edit så läggs en till användare till istället för att ändra på den markerade
+      // Ta bort texten i e-mail fältet när man trycker på tab?
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(WriteUserName.Text !="" && WriteEmail.Text!="")
-            UserList.Items.Add(new User(WriteUserName.Text,WriteEmail.Text));
+        { 
+                UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));    
         }
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
@@ -241,6 +242,18 @@ namespace Lab5__WPF_application
         private void WriteEmail_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (WriteEmail.Text.Contains("Write email here"))
+                WriteEmail.Clear();
+        }
+
+        private void WriteEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                AddUserButton_Click(sender, e);
+        }
+
+        private void WriteUserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
                 WriteEmail.Clear();
         }
     } 
