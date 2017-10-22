@@ -130,6 +130,7 @@ namespace Lab5__WPF_application
             bool canClick = AdminList.SelectedIndex >= 0;
             ChangeToUser.IsEnabled = canClick;
             DeleteUserButton.IsEnabled = canClick;
+            EditUserButton.IsEnabled = canClick;
         }
 
         private bool checkTextBoxUserName;
@@ -176,7 +177,7 @@ namespace Lab5__WPF_application
             {
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
-            //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn.
+            //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn. Ändra så att antingen amn inte kan klicka på knappen eller att en text kommer ut att det inte går
 
             if (UserList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
             {
@@ -188,7 +189,18 @@ namespace Lab5__WPF_application
                
 
             }
-         
+
+            if (AdminList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
+            {
+
+
+                AdminList.Items.Insert(AdminList.SelectedIndex, new User(WriteUserName.Text, WriteEmail.Text));
+                AdminList.Items.RemoveAt(AdminList.SelectedIndex);
+
+
+
+            }
+
 
 
 
