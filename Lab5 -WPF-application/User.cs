@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab5__WPF_application
 {
-    class User
+   class User 
     {
         public string UserName { get; set; }
         public string EmailAddress { get; set; }

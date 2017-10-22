@@ -86,6 +86,8 @@ namespace Lab5__WPF_application
 
             ChangeToAdminButton.IsEnabled = canClick;
 
+            EditUserButton.IsEnabled = canClick;
+
 
         }
 
@@ -116,13 +118,14 @@ namespace Lab5__WPF_application
             {
                 checkTextBoxWriteEmail = false;
                 EnableClickButton();
+               
             }
-
 
             else
                 
                 checkTextBoxWriteEmail = true;
                 EnableClickButton();
+           
 
         }
 
@@ -136,10 +139,24 @@ namespace Lab5__WPF_application
 
 
             private void EditUserButton_Click(object sender, RoutedEventArgs e)
-        {
+            {
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
-            
+
+
+
+
+
+            if (UserList.SelectedIndex >= 0)
+            {
+                
+
+                UserList.Items.Insert(UserList.SelectedIndex, new User(WriteUserName.Text, WriteEmail.Text));
+                UserList.Items.RemoveAt(UserList.SelectedIndex);
+
+            }
+
+
 
 
         }
@@ -171,6 +188,6 @@ namespace Lab5__WPF_application
 
       
 
-        }
+        } 
     }
 
