@@ -12,13 +12,13 @@
             <ColumnDefinition Width="45*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="AddUserButton" Content="Add new user" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="82" Height="25" Click="AddUserButton_Click" IsEnabled="False"/>
-        <TextBox x:Name="WriteUserName" HorizontalAlignment="Left" Height="23" Margin="13,41,0,0" TextWrapping="Wrap" Text="Write username" VerticalAlignment="Top" Width="120" TextChanged="WriteUserName_TextChanged"/>
+        <TextBox x:Name="WriteUserName" HorizontalAlignment="Left" Height="23" Margin="13,41,0,0" TextWrapping="Wrap" Text="Write username" VerticalAlignment="Top" Width="120" TextChanged="WriteUserName_TextChanged" IsMouseDirectlyOverChanged="WriteUserName_IsMouseDirectlyOverChanged"/>
         <ListBox x:Name="UserList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="10,154,0,0" VerticalAlignment="Top" Width="123" SelectionChanged="UserList_SelectionChanged"/>
-        <TextBox x:Name="WriteEmail" HorizontalAlignment="Left" Height="23" Margin="167,41,0,0" TextWrapping="Wrap" Text="Write email here" VerticalAlignment="Top" Width="120" TextChanged="WriteEmail_TextChanged"/>
+        <TextBox x:Name="WriteEmail" HorizontalAlignment="Left" Height="23" Margin="167,41,0,0" TextWrapping="Wrap" Text="Write email here" VerticalAlignment="Top" Width="120" TextChanged="WriteEmail_TextChanged" IsMouseDirectlyOverChanged="WriteEmail_IsMouseDirectlyOverChanged"/>
         <Button x:Name="EditUserButton" Content="Edit user" HorizontalAlignment="Left" Margin="97,92,0,0" VerticalAlignment="Top" Width="98" Height="25" Click="EditUserButton_Click" IsEnabled="False"/>
         <Button x:Name="DeleteUserButton" Content="Delete user/admin" HorizontalAlignment="Left" Margin="200,92,0,0" VerticalAlignment="Top" Width="108" Height="25" RenderTransformOrigin="-0.138,-1.31" Click="DeleteUserButton_Click" IsEnabled="False"/>
         <ListBox x:Name="AdminList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="305,155,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="AdminList_SelectionChanged" Grid.ColumnSpan="2"/>
-        <Label x:Name="UserInfo" Content="" HorizontalAlignment="Left" Margin="143,307,0,0" VerticalAlignment="Top" Width="175" FontSize="14" Height="48"/>
+        <Label x:Name="UserInfo" Content="" HorizontalAlignment="Left" Margin="143,307,0,0" VerticalAlignment="Top" Width="300" FontSize="14" Height="48" Grid.ColumnSpan="2"/>
         <Button x:Name="ChangeToAdminButton" Content=" Change to admin &gt;&gt;" HorizontalAlignment="Left" Margin="156,192,0,0" VerticalAlignment="Top" Width="120" Click="ChangeToAdminButton_Click" IsEnabled="False"/>
         <Button x:Name="ChangeToUser" Content="&lt;&lt; Change to User" HorizontalAlignment="Left" Margin="156,216,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.489,0.433" Click="ChangeToUser_Click" IsEnabled="False"/>
         <Label x:Name="UserListLabel" Content="Users" HorizontalAlignment="Left" Margin="52,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.674,0.437" FontWeight="Bold"/>

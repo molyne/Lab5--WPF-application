@@ -232,8 +232,17 @@ namespace Lab5__WPF_application
             }
         }
 
-      
+        private void WriteUserName_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(WriteUserName.Text.Contains("Write username"))
+            WriteUserName.Clear();
+        }
 
-        } 
+        private void WriteEmail_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (WriteEmail.Text.Contains("Write email here"))
+                WriteEmail.Clear();
+        }
+    } 
     }
 
