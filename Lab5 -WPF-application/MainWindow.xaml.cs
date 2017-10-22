@@ -24,7 +24,7 @@ namespace Lab5__WPF_application
         {
             InitializeComponent();
 
-     
+        
 
             List<User> user = new List<User>
             {
@@ -44,6 +44,8 @@ namespace Lab5__WPF_application
 
 
         }
+
+      
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -94,15 +96,46 @@ namespace Lab5__WPF_application
             DeleteUserButton.IsEnabled = canClick;
         }
 
+        private bool checkTextBoxUserName;
+        private bool checkTextBoxWriteEmail;
+
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (WriteUserName.Text.Contains("Write username") || WriteUserName.Text=="")
-                AddUserButton.IsEnabled = false;
+
+            if (WriteUserName.Text.Contains("Write username") || string.IsNullOrEmpty(WriteUserName.Text))
+                checkTextBoxUserName = false;
+
             else
-                AddUserButton.IsEnabled = true;
+                checkTextBoxUserName = true;
         }
 
-        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+
+        private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || string.IsNullOrEmpty(WriteEmail.Text))
+            {
+                checkTextBoxWriteEmail = false;
+                EnableClickButton();
+            }
+
+
+            else
+                
+                checkTextBoxWriteEmail = true;
+                EnableClickButton();
+
+        }
+
+        private void EnableClickButton()
+        {
+            if (checkTextBoxUserName && checkTextBoxWriteEmail)
+                AddUserButton.IsEnabled = true;
+            else
+                AddUserButton.IsEnabled = false;
+        }
+
+
+            private void EditUserButton_Click(object sender, RoutedEventArgs e)
         {
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
@@ -137,5 +170,7 @@ namespace Lab5__WPF_application
         }
 
       
+
+        }
     }
-}
+
