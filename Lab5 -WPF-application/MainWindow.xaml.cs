@@ -42,7 +42,7 @@ namespace Lab5__WPF_application
                 //new User("Ulla-Bella", "ub@gmail.com")
             };
 
-
+            UserInfo.Content = "Username: \nEmail:";
         }
 
       
@@ -81,7 +81,24 @@ namespace Lab5__WPF_application
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool canClick = UserList.SelectedIndex >= 0;
+
+
+            if (UserList.SelectedIndex >= 0)
+            {
+
+                if (UserList.SelectedItem != null)
+                {
+                    UserInfo.Content = "Username: " +
+
+                        ((User)UserList.SelectedItem).UserName + "\nEmail: " + ((User)UserList.SelectedItem).EmailAddress;
+                }
+
+            }
+            else
+                UserInfo.Content = "Username: \nEmail:";
+
+
+                bool canClick = UserList.SelectedIndex >= 0;
             DeleteUserButton.IsEnabled = canClick;
 
             ChangeToAdminButton.IsEnabled = canClick;
@@ -93,6 +110,23 @@ namespace Lab5__WPF_application
 
         private void AdminList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
+            if (AdminList.SelectedIndex >= 0)
+            {
+
+                if (AdminList.SelectedItem != null)
+                {
+                    UserInfo.Content = "Username: " +
+
+                        ((User)AdminList.SelectedItem).UserName + "\nEmail: " + ((User)AdminList.SelectedItem).EmailAddress;
+                }
+
+            }
+            else
+                UserInfo.Content = "Username: \nEmail:";
+
+
             bool canClick = AdminList.SelectedIndex >= 0;
             ChangeToUser.IsEnabled = canClick;
             DeleteUserButton.IsEnabled = canClick;
@@ -142,19 +176,19 @@ namespace Lab5__WPF_application
             {
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
+            //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn.
 
-
-
-
-
-            if (UserList.SelectedIndex >= 0)
+            if (UserList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
             {
-                
+
 
                 UserList.Items.Insert(UserList.SelectedIndex, new User(WriteUserName.Text, WriteEmail.Text));
                 UserList.Items.RemoveAt(UserList.SelectedIndex);
 
+               
+
             }
+         
 
 
 
