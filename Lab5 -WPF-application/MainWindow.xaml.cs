@@ -187,6 +187,8 @@ namespace Lab5__WPF_application
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
             //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn. Ändra så att antingen amn inte kan klicka på knappen eller att en text kommer ut att det inte går
+            WriteUserName.Focus();
+
 
             if (UserList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
             {
