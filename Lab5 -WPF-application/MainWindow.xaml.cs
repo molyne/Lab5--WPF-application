@@ -83,6 +83,8 @@ namespace Lab5__WPF_application
                 else
                     AdminList.SelectedIndex = postition;
             }
+            WriteUserName.Text = string.Empty;
+            WriteEmail.Text = string.Empty;
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -237,6 +239,8 @@ namespace Lab5__WPF_application
                 AdminList.Items.Add(selected); 
 
             }
+            WriteUserName.Text = string.Empty;
+            WriteEmail.Text = string.Empty;
         }
 
         private void ChangeToUser_Click(object sender, RoutedEventArgs e)
@@ -249,6 +253,8 @@ namespace Lab5__WPF_application
                 UserList.Items.Add(selected);
 
             }
+            WriteUserName.Text = string.Empty;
+            WriteEmail.Text = string.Empty;
         }
 
         private void WriteUserName_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
