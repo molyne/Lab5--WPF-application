@@ -54,7 +54,9 @@ namespace Lab5__WPF_application
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         { 
-                UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));    
+                UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+            WriteUserName.Text = string.Empty;
+            WriteEmail.Text = string.Empty;
         }
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
@@ -90,6 +92,8 @@ namespace Lab5__WPF_application
             if (UserList.SelectedIndex >= 0)
 
             {
+                WriteUserName.Text = ((User)UserList.SelectedItem).UserName;
+                WriteEmail.Text = ((User)UserList.SelectedItem).EmailAddress;
 
                 if (UserList.SelectedItem != null)
                 {
@@ -122,6 +126,9 @@ namespace Lab5__WPF_application
 
             if (AdminList.SelectedIndex >= 0)
             {
+               
+                WriteUserName.Text = ((User)AdminList.SelectedItem).UserName;
+                WriteEmail.Text = ((User)AdminList.SelectedItem).EmailAddress;
 
                 if (AdminList.SelectedItem != null)
                 {
@@ -214,7 +221,8 @@ namespace Lab5__WPF_application
 
 
 
-
+            WriteUserName.Text = string.Empty;
+            WriteEmail.Text = string.Empty;
 
         }
 
