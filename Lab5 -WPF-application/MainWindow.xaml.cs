@@ -56,6 +56,7 @@ namespace Lab5__WPF_application
         { 
                 UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
             WriteUserName.Text = string.Empty;
+            WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
         }
 
@@ -167,7 +168,7 @@ namespace Lab5__WPF_application
 
         private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || string.IsNullOrEmpty(WriteEmail.Text))
+            if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
             {
                 checkTextBoxWriteEmail = false;
                 EnableClickButton();
@@ -199,7 +200,7 @@ namespace Lab5__WPF_application
             WriteUserName.Focus();
 
 
-            if (UserList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
+            if (UserList.SelectedIndex >= 0)
             {
 
 
@@ -210,7 +211,7 @@ namespace Lab5__WPF_application
 
             }
 
-            if (AdminList.SelectedIndex >= 0 && checkTextBoxUserName && checkTextBoxWriteEmail)
+            if (AdminList.SelectedIndex >= 0)
             {
 
 
@@ -277,8 +278,12 @@ namespace Lab5__WPF_application
 
         private void WriteUserName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (e.Key == Key.Tab) { 
                 WriteEmail.Clear();
+                
+           
+                }
+             
         }
     } 
     }
