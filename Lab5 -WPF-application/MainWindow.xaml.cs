@@ -43,7 +43,7 @@ namespace Lab5__WPF_application
                 //new User("Ulla-Bella", "ub@gmail.com")
             };
 
-            UserInfo.Content = "Username: \nEmail:";
+            UserInfo.Content = "Username:\nEmail:";
         }
 
       // TO-DO
@@ -103,13 +103,13 @@ namespace Lab5__WPF_application
                 {
                     UserInfo.Content = "Username: " +
 
-                        ((User)UserList.SelectedItem).UserName + "\nEmail: " + ((User)UserList.SelectedItem).EmailAddress;
+                        ((User)UserList.SelectedItem).UserName + " \nEmail: " + ((User)UserList.SelectedItem).EmailAddress;
                     AddUserButton.IsEnabled = false;
                 }
 
             }
             else
-                UserInfo.Content = "Username: \nEmail:";
+                UserInfo.Content = "Username: \nEmail: ";
 
 
                 bool canClick = UserList.SelectedIndex >= 0;
