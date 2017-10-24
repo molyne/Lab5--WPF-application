@@ -228,6 +228,10 @@ namespace Lab5__WPF_application
                 AdminList.Items.Refresh();
                 UserInfo.Content = "Username: " + user.UserName + "\nEmail: " + user.EmailAddress;
             }
+            UserList.UnselectAll();
+            AdminList.UnselectAll();
+            
+
             WriteUserName.Text = string.Empty;
             WriteEmail.Text = string.Empty;
 
