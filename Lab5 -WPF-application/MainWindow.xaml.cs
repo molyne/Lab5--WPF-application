@@ -110,7 +110,7 @@ namespace Lab5__WPF_application
             }
             else
                 UserInfo.Content = "Username: \nEmail: ";
-
+            
 
                 bool canClick = UserList.SelectedIndex >= 0;
             DeleteUserButton.IsEnabled = canClick;

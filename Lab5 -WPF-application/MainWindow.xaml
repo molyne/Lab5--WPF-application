@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="AddUserButton" Content="Add" HorizontalAlignment="Left" Margin="324,78,0,0" VerticalAlignment="Top" Width="39" Height="24" Click="AddUserButton_Click" IsEnabled="False"/>
+        <Button x:Name="AddUserButton" Content="Add" HorizontalAlignment="Left" Margin="324,78,0,0" VerticalAlignment="Top" Width="39" Height="24" Click="AddUserButton_Click" Background="#FF679BE9" OpacityMask="#FFA1B9DF" BorderBrush="#FFA49595" Foreground="White"/>
         <TextBox x:Name="WriteUserName" TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="19,81,0,0" TextWrapping="Wrap" Text="Write username" VerticalAlignment="Top" Width="120" TextChanged="WriteUserName_TextChanged" IsMouseDirectlyOverChanged="WriteUserName_IsMouseDirectlyOverChanged" KeyDown="WriteUserName_KeyDown"/>
         <ListBox x:Name="UserList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="36,223,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="UserList_SelectionChanged"/>
         <TextBox x:Name="WriteEmail" TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="167,80,0,0" TextWrapping="Wrap" Text="Write email here" VerticalAlignment="Top" Width="120" TextChanged="WriteEmail_TextChanged" IsMouseDirectlyOverChanged="WriteEmail_IsMouseDirectlyOverChanged" KeyDown="WriteEmail_KeyDown"/>
