@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Lab5__WPF_application
 {
     /// <summary>
@@ -197,33 +198,36 @@ namespace Lab5__WPF_application
             //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
 
             //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn. Ändra så att antingen amn inte kan klicka på knappen eller att en text kommer ut att det inte går
-            WriteUserName.Focus();
 
-
-            if (UserList.SelectedIndex >= 0)
+            if (UserList.SelectedIndex >= 0) //om man ändrar på en användare i userlist
             {
 
 
-                UserList.Items.Insert(UserList.SelectedIndex, new User(WriteUserName.Text, WriteEmail.Text));
-                UserList.Items.RemoveAt(UserList.SelectedIndex);
+                var selectedUser = UserList.Items[UserList.SelectedIndex];
 
-               
+                User user = (User)selectedUser;
 
+                user.UserName = WriteUserName.Text;
+                user.EmailAddress = WriteEmail.Text;
+
+
+                UserList.Items.Refresh();
+                UserInfo.Content = "Username: " + user.UserName + "\nEmail: " + user.EmailAddress;
             }
-
-            if (AdminList.SelectedIndex >= 0)
+            if (AdminList.SelectedIndex >= 0) //om man ändrar på en användare i adminlist
             {
 
+                var selectedUser = AdminList.Items[AdminList.SelectedIndex];
 
-                AdminList.Items.Insert(AdminList.SelectedIndex, new User(WriteUserName.Text, WriteEmail.Text));
-                AdminList.Items.RemoveAt(AdminList.SelectedIndex);
+                User user = (User)selectedUser;
+
+                user.UserName = WriteUserName.Text;
+                user.EmailAddress = WriteEmail.Text;
 
 
-
+                AdminList.Items.Refresh();
+                UserInfo.Content = "Username: " + user.UserName + "\nEmail: " + user.EmailAddress;
             }
-
-
-
             WriteUserName.Text = string.Empty;
             WriteEmail.Text = string.Empty;
 
