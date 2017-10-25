@@ -54,8 +54,21 @@ namespace Lab5__WPF_application
    
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+
+            
+                List<string> nameList = new List<string>();
+                for (int i = 0; i < UserList.Items.Count; i++)
+                {
+                    nameList.Add(((User)UserList.Items.GetItemAt(i)).UserName);
+                }
+               
+
+                if (!nameList.Contains(WriteUserName.Text))
                 UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+            else
+                MessageBox.Show("This name already exists!");
+
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
