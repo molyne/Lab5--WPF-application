@@ -62,12 +62,15 @@ namespace Lab5__WPF_application
                 {
                     nameList.Add(((User)UserList.Items.GetItemAt(i)).UserName);
                 }
-               
 
-                if (!nameList.Contains(WriteUserName.Text))
+
+            if (!nameList.Contains(WriteUserName.Text))
+            {
                 UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+                ErrorLabel.Content = string.Empty;
+            }
             else
-                MessageBox.Show("This name already exists!");
+                ErrorLabel.Content = "This username already exists!";
 
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
