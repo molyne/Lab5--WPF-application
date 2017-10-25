@@ -19,7 +19,9 @@ namespace Lab5__WPF_application
             this.EmailAddress = emailAddress;
         }
 
-
-       
-}
+        public static explicit operator User(bool v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

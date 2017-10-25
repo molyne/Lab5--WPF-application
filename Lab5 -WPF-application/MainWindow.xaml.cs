@@ -25,7 +25,7 @@ namespace Lab5__WPF_application
         {
             InitializeComponent();
 
-        
+            
 
             List<User> user = new List<User>
             {
@@ -54,8 +54,13 @@ namespace Lab5__WPF_application
    
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
-        { 
-                UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+        {
+            List<User> user = new List<User>();
+
+            if (!UserList.Items.Contains(user))
+                
+
+            UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
@@ -159,20 +164,35 @@ namespace Lab5__WPF_application
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+
+         
             if (WriteUserName.Text.Contains("Write username") || string.IsNullOrEmpty(WriteUserName.Text))
-                checkTextBoxUserName = false;
+             checkTextBoxUserName = false;
 
             else
                 checkTextBoxUserName = true;
+            if (ClearTextBoxesButton != null)
+            {
+                if (!WriteUserName.Text.Equals(""))
+
+                    ClearTextBoxesButton.IsEnabled = true;
+
+                else ClearTextBoxesButton.IsEnabled = false;
+
+            }
+
         }
 
 
         private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
+
             if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
             {
                 checkTextBoxWriteEmail = false;
                 EnableClickButton();
+            
                
             }
 
@@ -292,6 +312,18 @@ namespace Lab5__WPF_application
            
                 }
              
+        }
+
+        private void ClearTextBoxesButton_Click(object sender, RoutedEventArgs e)
+        {
+            WriteUserName.Clear();
+        }
+
+        private void ClearTextBoxesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            WriteUserName.Clear();
+            WriteEmail.Clear();
+            WriteUserName.Focus();
         }
     } 
     }

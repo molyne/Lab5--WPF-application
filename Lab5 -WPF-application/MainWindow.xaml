@@ -5,18 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab5__WPF_application"
         mc:Ignorable="d"
-        Title="Changename" Height="446.666" Width="525">
+        Title="Changename" Height="514.666" Width="626">
     <Grid Margin="0,0,3.333,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="AddUserButton" Content="Add" HorizontalAlignment="Left" Margin="324,78,0,0" VerticalAlignment="Top" Width="39" Height="24" Click="AddUserButton_Click" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" IsEnabled="False" OpacityMask="#FF6094E7"/>
+        <Button x:Name="AddUserButton" Content="Add" HorizontalAlignment="Left" Margin="313,77,0,0" VerticalAlignment="Top" Width="39" Height="24" Click="AddUserButton_Click" BorderBrush="#FF491818" Foreground="White" IsEnabled="False" Background="{x:Null}" RenderTransformOrigin="0.154,0.5">
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+        </Button>
         <TextBox x:Name="WriteUserName" TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="19,81,0,0" TextWrapping="Wrap" Text="Write username" VerticalAlignment="Top" Width="120" TextChanged="WriteUserName_TextChanged" IsMouseDirectlyOverChanged="WriteUserName_IsMouseDirectlyOverChanged" KeyDown="WriteUserName_KeyDown"/>
         <ListBox x:Name="UserList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="36,223,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="UserList_SelectionChanged"/>
         <TextBox x:Name="WriteEmail" TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="167,80,0,0" TextWrapping="Wrap" Text="Write email here" VerticalAlignment="Top" Width="120" TextChanged="WriteEmail_TextChanged" IsMouseDirectlyOverChanged="WriteEmail_IsMouseDirectlyOverChanged" KeyDown="WriteEmail_KeyDown"/>
-        <Button x:Name="EditUserButton" Content="Update" HorizontalAlignment="Left" Margin="381,78,0,0" VerticalAlignment="Top" Width="49" Height="24" Click="EditUserButton_Click" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" OpacityMask="#FF6094E7"/>
-        <Button x:Name="DeleteUserButton" Content="Delete" HorizontalAlignment="Left" Margin="448,78,0,0" VerticalAlignment="Top" Width="49" Height="24" RenderTransformOrigin="-0.138,-1.31" Click="DeleteUserButton_Click" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" OpacityMask="#FF6094E7"/>
+        <Button x:Name="EditUserButton" Content="Update" HorizontalAlignment="Left" Margin="374,77,0,0" VerticalAlignment="Top" Width="49" Height="24" Click="EditUserButton_Click" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" OpacityMask="#FF6094E7"/>
+        <Button x:Name="DeleteUserButton" Content="Delete" HorizontalAlignment="Left" Margin="443,77,0,0" VerticalAlignment="Top" Width="49" Height="24" RenderTransformOrigin="-0.138,-1.31" Click="DeleteUserButton_Click" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" OpacityMask="#FF6094E7"/>
         <ListBox x:Name="AdminList" DisplayMemberPath="UserName" HorizontalAlignment="Left" Height="132" Margin="347,223,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="AdminList_SelectionChanged"/>
         <Label x:Name="UserInfo" Content="" HorizontalAlignment="Left" Margin="19,135,0,0" VerticalAlignment="Top" Width="300" Height="48" FontWeight="Bold"/>
         <Button x:Name="ChangeToAdminButton" Content="Admin &gt;&gt;" HorizontalAlignment="Left" Margin="219,260,0,0" VerticalAlignment="Top" Width="68" Click="ChangeToAdminButton_Click" IsEnabled="False" Height="24" Background="#FF679BE9" BorderBrush="#FFA49595" Foreground="White" OpacityMask="#FF6094E7"/>
@@ -25,5 +32,6 @@
         <Label x:Name="AdminListLabel" Content="Administrators" HorizontalAlignment="Left" Margin="347,196,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="94"/>
         <Label x:Name="NameLabel" Content="Choose your username:" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="141"/>
         <Label x:Name="EmailLabel" Content="Your email address:" HorizontalAlignment="Left" Margin="155,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="164"/>
+        <Button x:Name="ClearTextBoxesButton" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Margin="510,77,0,0" Height="24" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FFA49595" OpacityMask="#FF6094E7" Foreground="White" Click="ClearTextBoxesButton_Click_1"/>
     </Grid>
 </Window>
