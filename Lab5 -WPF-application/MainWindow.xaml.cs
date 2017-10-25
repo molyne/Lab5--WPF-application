@@ -112,6 +112,8 @@ namespace Lab5__WPF_application
             if (UserList.SelectedIndex >= 0)
 
             {
+                ErrorLabel.Content = string.Empty;
+
                 WriteUserName.Text = ((User)UserList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)UserList.SelectedItem).EmailAddress;
 
@@ -146,7 +148,8 @@ namespace Lab5__WPF_application
 
             if (AdminList.SelectedIndex >= 0)
             {
-               
+                ErrorLabel.Content = string.Empty;
+
                 WriteUserName.Text = ((User)AdminList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)AdminList.SelectedItem).EmailAddress;
 
