@@ -203,10 +203,13 @@ namespace Lab5__WPF_application
             if (ClearTextBoxesButton != null)
             {
                 if (!WriteUserName.Text.Equals(""))
-
+                {
                     ClearTextBoxesButton.IsEnabled = true;
+                    EnableClickButton();
+                }
                 else
                     ClearTextBoxesButton.IsEnabled = false;
+                EnableClickButton();
 
             }
         }
@@ -325,7 +328,7 @@ namespace Lab5__WPF_application
 
         private void WriteEmail_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter && AddUserButton.IsEnabled == true)
                 AddUserButton_Click(sender, e);
         }
 
@@ -336,7 +339,9 @@ namespace Lab5__WPF_application
                 
            
                 }
-             
+            if (e.Key == Key.Enter && AddUserButton.IsEnabled == true)
+                AddUserButton_Click(sender, e);
+
         }
 
         private void ClearTextBoxesButton_Click(object sender, RoutedEventArgs e)
