@@ -62,6 +62,10 @@ namespace Lab5__WPF_application
                 {
                     nameList.Add(((User)UserList.Items.GetItemAt(i)).UserName);
                 }
+                for (int i = 0; i < AdminList.Items.Count; i++)
+                {
+                    nameList.Add(((User)AdminList.Items.GetItemAt(i)).UserName);
+                }
 
 
             if (!nameList.Contains(WriteUserName.Text))
