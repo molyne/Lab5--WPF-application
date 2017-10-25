@@ -25,7 +25,7 @@ namespace Lab5__WPF_application
         {
             InitializeComponent();
 
-            
+        
 
             List<User> user = new List<User>
             {
@@ -55,12 +55,37 @@ namespace Lab5__WPF_application
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-            List<User> user = new List<User>();
 
-            if (!UserList.Items.Contains(user))
-                
+            
+                List<string> nameList = new List<string>();
+                for (int i = 0; i < UserList.Items.Count; i++)
+                {
+                    nameList.Add(((User)UserList.Items.GetItemAt(i)).UserName);
+                    nameList.Add(((User)UserList.Items.GetItemAt(i)).EmailAddress);
+                }
+                for (int i = 0; i < AdminList.Items.Count; i++)
+                {
+                    nameList.Add(((User)AdminList.Items.GetItemAt(i)).UserName);
+                    nameList.Add(((User)AdminList.Items.GetItemAt(i)).EmailAddress);
+                }
 
-            UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+
+            if (!nameList.Contains(WriteUserName.Text) && !nameList.Contains(WriteEmail.Text))
+            {
+                UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
+                ErrorLabel.Content = string.Empty;
+            }
+            else if (nameList.Contains(WriteEmail.Text) && nameList.Contains(WriteUserName.Text))
+            {
+                ErrorLabel.Content = "Username already exists.";
+                ErrorLabel2.Content = "Email already exists.";
+            }
+            else if (nameList.Contains(WriteUserName.Text))
+                ErrorLabel.Content = "Username already exists.";
+            else if (nameList.Contains(WriteEmail.Text))
+                ErrorLabel2.Content = "Email already exists.";
+           
+
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
@@ -101,6 +126,9 @@ namespace Lab5__WPF_application
             if (UserList.SelectedIndex >= 0)
 
             {
+                ErrorLabel.Content = string.Empty;
+                ErrorLabel2.Content = string.Empty;
+
                 WriteUserName.Text = ((User)UserList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)UserList.SelectedItem).EmailAddress;
 
@@ -135,7 +163,9 @@ namespace Lab5__WPF_application
 
             if (AdminList.SelectedIndex >= 0)
             {
-               
+                ErrorLabel.Content = string.Empty;
+                ErrorLabel2.Content = string.Empty;
+
                 WriteUserName.Text = ((User)AdminList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)AdminList.SelectedItem).EmailAddress;
 
@@ -164,35 +194,20 @@ namespace Lab5__WPF_application
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-
-         
             if (WriteUserName.Text.Contains("Write username") || string.IsNullOrEmpty(WriteUserName.Text))
-             checkTextBoxUserName = false;
+                checkTextBoxUserName = false;
 
             else
                 checkTextBoxUserName = true;
-            if (ClearTextBoxesButton != null)
-            {
-                if (!WriteUserName.Text.Equals(""))
-
-                    ClearTextBoxesButton.IsEnabled = true;
-
-                else ClearTextBoxesButton.IsEnabled = false;
-
-            }
-
         }
 
 
         private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-
             if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
             {
                 checkTextBoxWriteEmail = false;
                 EnableClickButton();
-            
                
             }
 
@@ -312,18 +327,6 @@ namespace Lab5__WPF_application
            
                 }
              
-        }
-
-        private void ClearTextBoxesButton_Click(object sender, RoutedEventArgs e)
-        {
-            WriteUserName.Clear();
-        }
-
-        private void ClearTextBoxesButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            WriteUserName.Clear();
-            WriteEmail.Clear();
-            WriteUserName.Focus();
         }
     } 
     }
