@@ -70,13 +70,21 @@ namespace Lab5__WPF_application
                 }
 
 
-            if (!nameList.Contains(WriteUserName.Text)&&!nameList.Contains(WriteEmail.Text))
+            if (!nameList.Contains(WriteUserName.Text) && !nameList.Contains(WriteEmail.Text))
             {
                 UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
                 ErrorLabel.Content = string.Empty;
             }
-            else
-                ErrorLabel.Content = "This username or email already exists!";
+            else if (nameList.Contains(WriteEmail.Text) && nameList.Contains(WriteUserName.Text))
+            {
+                ErrorLabel.Content = "Username already exists.";
+                ErrorLabel2.Content = "Email already exists.";
+            }
+            else if (nameList.Contains(WriteUserName.Text))
+                ErrorLabel.Content = "Username already exists.";
+            else if (nameList.Contains(WriteEmail.Text))
+                ErrorLabel2.Content = "Email already exists.";
+           
 
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
@@ -119,6 +127,7 @@ namespace Lab5__WPF_application
 
             {
                 ErrorLabel.Content = string.Empty;
+                ErrorLabel2.Content = string.Empty;
 
                 WriteUserName.Text = ((User)UserList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)UserList.SelectedItem).EmailAddress;
@@ -155,6 +164,7 @@ namespace Lab5__WPF_application
             if (AdminList.SelectedIndex >= 0)
             {
                 ErrorLabel.Content = string.Empty;
+                ErrorLabel2.Content = string.Empty;
 
                 WriteUserName.Text = ((User)AdminList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)AdminList.SelectedItem).EmailAddress;

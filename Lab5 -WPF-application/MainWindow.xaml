@@ -25,6 +25,7 @@
         <Label x:Name="AdminListLabel" Content="Administrators" HorizontalAlignment="Left" Margin="347,196,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="94"/>
         <Label x:Name="NameLabel" Content="Choose your username:" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="141"/>
         <Label x:Name="EmailLabel" Content="Your email address:" HorizontalAlignment="Left" Margin="155,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="164"/>
-        <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" Margin="19,103,0,0" VerticalAlignment="Top" Foreground="#FFE43A3A"/>
+        <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Foreground="#FFE43A3A"/>
+        <Label x:Name="ErrorLabel2" Content="" HorizontalAlignment="Left" Margin="167,104,0,0" VerticalAlignment="Top" Foreground="#FFE43A3A"/>
     </Grid>
 </Window>
