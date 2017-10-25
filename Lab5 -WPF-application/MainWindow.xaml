@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab5__WPF_application"
         mc:Ignorable="d"
-        Title="Changename" Height="446.666" Width="525">
+        Title="Changename" Height="486.666" Width="630">
     <Grid Margin="0,0,3.333,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,5 +27,6 @@
         <Label x:Name="EmailLabel" Content="Your email address:" HorizontalAlignment="Left" Margin="155,50,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="164"/>
         <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Foreground="#FFE43A3A"/>
         <Label x:Name="ErrorLabel2" Content="" HorizontalAlignment="Left" Margin="167,104,0,0" VerticalAlignment="Top" Foreground="#FFE43A3A"/>
+        <Button x:Name="ClearTextBoxesButton" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="54" Margin="516,78,0,0" Height="24" IsEnabled="False" Background="#FF679BE9" BorderBrush="#FF679BE9" Foreground="White" OpacityMask="#FF6094E7" Click="ClearTextBoxesButton_Click"/>
     </Grid>
 </Window>

@@ -199,6 +199,16 @@ namespace Lab5__WPF_application
 
             else
                 checkTextBoxUserName = true;
+
+            if (ClearTextBoxesButton != null)
+            {
+                if (!WriteUserName.Text.Equals(""))
+
+                    ClearTextBoxesButton.IsEnabled = true;
+                else
+                    ClearTextBoxesButton.IsEnabled = false;
+
+            }
         }
 
 
@@ -327,6 +337,13 @@ namespace Lab5__WPF_application
            
                 }
              
+        }
+
+        private void ClearTextBoxesButton_Click(object sender, RoutedEventArgs e)
+        {
+            WriteUserName.Clear();
+            WriteEmail.Clear();
+            WriteUserName.Focus();
         }
     } 
     }
