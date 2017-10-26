@@ -166,10 +166,14 @@ namespace Lab5__WPF_application
         {
 
             if (WriteUserName.Text.Contains("Write username here") || string.IsNullOrEmpty(WriteUserName.Text))
+            {
                 IsTextBoxUserNameValid = false;
+                EnableAddButton();
+            }
 
             else
                 IsTextBoxUserNameValid = true;
+                EnableAddButton();
 
             if (ClearTextBoxesButton != null)
             {
@@ -188,11 +192,13 @@ namespace Lab5__WPF_application
                 SameUserNameLabel.Content = string.Empty;
                 SameEmailLabel.Content = string.Empty;
             }
+
+            
         }
 
         private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
+            if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || WriteEmail.Text.Contains(" "))
 
             {
                 IsTextBoxEmailValid = false;
