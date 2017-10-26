@@ -71,7 +71,6 @@ namespace Lab5__WPF_application
             WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
 
-
         }
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
