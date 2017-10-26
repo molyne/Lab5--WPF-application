@@ -21,6 +21,10 @@ namespace Lab5__WPF_application
     /// </summary>
     public partial class MainWindow : Window
     {
+    
+        public bool IsTextBoxUserNameValid { get; set; }
+        public bool IsTextBoxEmailValid { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,17 +35,7 @@ namespace Lab5__WPF_application
 
             UserInfo.Content = "Username:\nEmail:";
         }
-
-        // TO-DO
-        //   bools, vart lägga (utanför metoder så man kan nå dom..?) .. privata eller inte? KONSEKVENTA. 
-        // ändra changename i fönstret
-        // behövs det några kommentarer?
-
-
-        // göra en bool av UserList.SelectedIndex >= 0 ... typ isUserSelected? (ersätta canclick med denna?)
-        // AdminList.SelectedIndex >= 0 isAdminSelected
-
-            // Byta namn errorlabel
+         
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -60,17 +54,18 @@ namespace Lab5__WPF_application
             if (!nameList.Contains(WriteUserName.Text) && !nameList.Contains(WriteEmail.Text))
             {
                 UserList.Items.Add(new User(WriteUserName.Text, WriteEmail.Text));
-                ErrorLabel.Content = string.Empty;
+                SameUserNameLabel.Content = string.Empty;
+                SameEmailLabel.Content = string.Empty;
             }
             else if (nameList.Contains(WriteEmail.Text) && nameList.Contains(WriteUserName.Text))
             {
-                ErrorLabel.Content = "Username already exists.";
-                ErrorLabel2.Content = "Email already exists.";
+                SameUserNameLabel.Content = "Username already exists.";
+                SameEmailLabel.Content = "Email already exists.";
             }
             else if (nameList.Contains(WriteUserName.Text))
-                ErrorLabel.Content = "Username already exists.";
+                SameUserNameLabel.Content = "Username already exists.";
             else if (nameList.Contains(WriteEmail.Text))
-                ErrorLabel2.Content = "Email already exists.";
+                SameEmailLabel.Content = "Email already exists.";
            
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
@@ -110,8 +105,8 @@ namespace Lab5__WPF_application
         {
             if (UserList.SelectedIndex >= 0)
             {
-                ErrorLabel.Content = string.Empty;
-                ErrorLabel2.Content = string.Empty;
+                SameUserNameLabel.Content = string.Empty;
+                SameEmailLabel.Content = string.Empty;
 
                 WriteUserName.Text = ((User)UserList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)UserList.SelectedItem).EmailAddress;
@@ -127,7 +122,7 @@ namespace Lab5__WPF_application
             else
                 UserInfo.Content = "Username: \nEmail: ";
             
-            // isPossibletoClick?
+           
 
                 bool UserListSelected = UserList.SelectedIndex >= 0;
 
@@ -140,8 +135,8 @@ namespace Lab5__WPF_application
         {
             if (AdminList.SelectedIndex >= 0)
             {
-                ErrorLabel.Content = string.Empty;
-                ErrorLabel2.Content = string.Empty;
+                SameUserNameLabel.Content = string.Empty;
+                SameEmailLabel.Content = string.Empty;
 
                 WriteUserName.Text = ((User)AdminList.SelectedItem).UserName;
                 WriteEmail.Text = ((User)AdminList.SelectedItem).EmailAddress;
@@ -157,7 +152,7 @@ namespace Lab5__WPF_application
             else
                 UserInfo.Content = "Username: \nEmail:";
 
-            // samma bool igen..? metod med inparameter?
+            
 
             bool AdminListSelected = AdminList.SelectedIndex >= 0;
             ChangeToUser.IsEnabled = AdminListSelected;
@@ -166,17 +161,16 @@ namespace Lab5__WPF_application
            
         }
 
-        private bool isTextBoxUserNameValid;
-        private bool isTextBoxEmailValid;
+      
 
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
             if (WriteUserName.Text.Contains("Write username here") || string.IsNullOrEmpty(WriteUserName.Text))
-                isTextBoxUserNameValid = false;
+                IsTextBoxUserNameValid = false;
 
             else
-                isTextBoxUserNameValid = true;
+                IsTextBoxUserNameValid = true;
 
             if (ClearTextBoxesButton != null)
             {
@@ -190,10 +184,10 @@ namespace Lab5__WPF_application
 
             }
 
-            if (ErrorLabel != null && ErrorLabel2 != null && !WriteUserName.Text.Equals("")) 
+            if (SameUserNameLabel != null && SameEmailLabel != null && !WriteUserName.Text.Equals("")) 
             {
-                ErrorLabel.Content = string.Empty;
-                ErrorLabel2.Content = string.Empty;
+                SameUserNameLabel.Content = string.Empty;
+                SameEmailLabel.Content = string.Empty;
             }
         }
 
@@ -202,19 +196,19 @@ namespace Lab5__WPF_application
             if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
 
             {
-                isTextBoxEmailValid = false;
+                IsTextBoxEmailValid = false;
                 EnableAddButton();
             
             }
 
             else
-                isTextBoxEmailValid = true;
+                IsTextBoxEmailValid = true;
                 EnableAddButton();
         }
 
         private void EnableAddButton()
         {
-            if (isTextBoxUserNameValid && isTextBoxEmailValid)
+            if (IsTextBoxUserNameValid && IsTextBoxEmailValid)
                 AddUserButton.IsEnabled = true;
             else
                 AddUserButton.IsEnabled = false;
