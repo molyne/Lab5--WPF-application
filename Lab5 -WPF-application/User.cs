@@ -11,6 +11,7 @@ namespace Lab5__WPF_application
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
 
+     
 
 
       public User(string userName, string emailAddress)

@@ -25,38 +25,26 @@ namespace Lab5__WPF_application
         {
             InitializeComponent();
 
-        
+            List<User> user = new List<User>();
 
-            List<User> user = new List<User>
-            {
-               //new User("Molyn", "molyn@gmail.com"),
-               //new User("Camilla", "camilla@hotmail.com"),
-               //new User("John", "john@gmail.com"),
-               //new User("Silvio", "silvio@hotmail.com"),
-               //new User("Sylvester","sylvester@gmail.com")
-
-            };
-
-            List<User> administrator = new List<User>
-            {
-                //new User("Ragnar","ragnar@hotmail.com"),
-                //new User("Ulla-Bella", "ub@gmail.com")
-            };
+            List<User> administrator = new List<User>();
 
             UserInfo.Content = "Username:\nEmail:";
         }
 
-      // TO-DO
-      // När man trycker på edit så läggs en till användare till istället för att ändra på den markerade
-      // när man markerar en användare skall adduserbutton vara disable
-      // när man lagt till en användare skall textboxarna bli tomma eller återgå till texten från början
-      // jag gjorde privata bools och la dom utanför, vara konsekventa
-   
+        // TO-DO
+        //   bools, vart lägga (utanför metoder så man kan nå dom..?) .. privata eller inte? KONSEKVENTA. 
+        // ändra changename i fönstret
+        // behövs det några kommentarer?
+
+
+        // göra en bool av UserList.SelectedIndex >= 0 ... typ isUserSelected? (ersätta canclick med denna?)
+        // AdminList.SelectedIndex >= 0 isAdminSelected
+
+            // Byta namn errorlabel
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-
-            
                 List<string> nameList = new List<string>();
                 for (int i = 0; i < UserList.Items.Count; i++)
                 {
@@ -68,7 +56,6 @@ namespace Lab5__WPF_application
                     nameList.Add(((User)AdminList.Items.GetItemAt(i)).UserName);
                     nameList.Add(((User)AdminList.Items.GetItemAt(i)).EmailAddress);
                 }
-
 
             if (!nameList.Contains(WriteUserName.Text) && !nameList.Contains(WriteEmail.Text))
             {
@@ -85,17 +72,17 @@ namespace Lab5__WPF_application
             else if (nameList.Contains(WriteEmail.Text))
                 ErrorLabel2.Content = "Email already exists.";
            
-
             WriteUserName.Text = string.Empty;
             WriteUserName.Focus();
             WriteEmail.Text = string.Empty;
+
+
         }
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
         {
             if (UserList.SelectedIndex >= 0)
             {
-
                 int postition = UserList.SelectedIndex;
                 UserList.Items.RemoveAt(postition);
 
@@ -106,7 +93,6 @@ namespace Lab5__WPF_application
             }
             if (AdminList.SelectedIndex >= 0)
             {
-
                 int postition = AdminList.SelectedIndex;
                 AdminList.Items.RemoveAt(postition);
 
@@ -115,16 +101,14 @@ namespace Lab5__WPF_application
                 else
                     AdminList.SelectedIndex = postition;
             }
+
             WriteUserName.Text = string.Empty;
             WriteEmail.Text = string.Empty;
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
             if (UserList.SelectedIndex >= 0)
-
             {
                 ErrorLabel.Content = string.Empty;
                 ErrorLabel2.Content = string.Empty;
@@ -137,30 +121,23 @@ namespace Lab5__WPF_application
                     UserInfo.Content = "Username: " +
 
                         ((User)UserList.SelectedItem).UserName + " \nEmail: " + ((User)UserList.SelectedItem).EmailAddress;
-                    AddUserButton.IsEnabled = false;
                 }
 
             }
             else
                 UserInfo.Content = "Username: \nEmail: ";
             
+            // isPossibletoClick?
 
                 bool canClick = UserList.SelectedIndex >= 0;
+
             DeleteUserButton.IsEnabled = canClick;
-
             ChangeToAdminButton.IsEnabled = canClick;
-
-            EditUserButton.IsEnabled = canClick;
-
-            
-
-
+            UpdateUserButton.IsEnabled = canClick;
         }
 
         private void AdminList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
             if (AdminList.SelectedIndex >= 0)
             {
                 ErrorLabel.Content = string.Empty;
@@ -180,84 +157,81 @@ namespace Lab5__WPF_application
             else
                 UserInfo.Content = "Username: \nEmail:";
 
+            // samma bool igen..? metod med inparameter?
 
             bool canClick = AdminList.SelectedIndex >= 0;
             ChangeToUser.IsEnabled = canClick;
             DeleteUserButton.IsEnabled = canClick;
-            EditUserButton.IsEnabled = canClick;
+            UpdateUserButton.IsEnabled = canClick;
            
         }
 
-        private bool checkTextBoxUserName;
-        private bool checkTextBoxWriteEmail;
+        private bool isTextBoxUserNameValid;
+        private bool isTextBoxEmailValid;
 
         private void WriteUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            if (WriteUserName.Text.Contains("Write username") || string.IsNullOrEmpty(WriteUserName.Text))
-                checkTextBoxUserName = false;
+            if (WriteUserName.Text.Contains("Write username here") || string.IsNullOrEmpty(WriteUserName.Text))
+                isTextBoxUserNameValid = false;
 
             else
-                checkTextBoxUserName = true;
+                isTextBoxUserNameValid = true;
 
             if (ClearTextBoxesButton != null)
             {
                 if (!WriteUserName.Text.Equals(""))
                 {
                     ClearTextBoxesButton.IsEnabled = true;
-                    EnableClickButton();
+                    
                 }
                 else
                     ClearTextBoxesButton.IsEnabled = false;
-                EnableClickButton();
 
             }
-        }
 
+            if (ErrorLabel != null && ErrorLabel2 != null && !WriteUserName.Text.Equals("")) 
+            {
+                ErrorLabel.Content = string.Empty;
+                ErrorLabel2.Content = string.Empty;
+            }
+        }
 
         private void WriteEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (WriteEmail.Text.Contains("Write email here") || !WriteEmail.Text.Contains("@") || !WriteEmail.Text.Contains(".") || string.IsNullOrEmpty(WriteEmail.Text))
+
             {
-                checkTextBoxWriteEmail = false;
-                EnableClickButton();
-               
+                isTextBoxEmailValid = false;
+                EnableAddButton();
+            
             }
 
             else
-                
-                checkTextBoxWriteEmail = true;
-                EnableClickButton();
-           
-
+                isTextBoxEmailValid = true;
+                EnableAddButton();
         }
 
-        private void EnableClickButton()
+        private void EnableAddButton()
         {
-            if (checkTextBoxUserName && checkTextBoxWriteEmail)
+            if (isTextBoxUserNameValid && isTextBoxEmailValid)
                 AddUserButton.IsEnabled = true;
             else
                 AddUserButton.IsEnabled = false;
         }
 
 
-            private void EditUserButton_Click(object sender, RoutedEventArgs e)
+            private void UpdateUserButton_Click(object sender, RoutedEventArgs e)
             {
-            //När man klickar på den ska den användare i ListBox som är vald uppdateras med nya värden
-
-            //TO DO - när man ändrar på en användare kan man göra så att användaren inte har något användrnamn. Ändra så att antingen amn inte kan klicka på knappen eller att en text kommer ut att det inte går
 
             if (UserList.SelectedIndex >= 0) //om man ändrar på en användare i userlist
             {
-
-
                 var selectedUser = UserList.Items[UserList.SelectedIndex];
 
                 User user = (User)selectedUser;
 
                 user.UserName = WriteUserName.Text;
                 user.EmailAddress = WriteEmail.Text;
-
 
                 UserList.Items.Refresh();
                 UserInfo.Content = "Username: " + user.UserName + "\nEmail: " + user.EmailAddress;
@@ -272,13 +246,11 @@ namespace Lab5__WPF_application
                 user.UserName = WriteUserName.Text;
                 user.EmailAddress = WriteEmail.Text;
 
-
                 AdminList.Items.Refresh();
                 UserInfo.Content = "Username: " + user.UserName + "\nEmail: " + user.EmailAddress;
             }
             UserList.UnselectAll();
-            AdminList.UnselectAll();
-            
+            AdminList.UnselectAll();            
 
             WriteUserName.Text = string.Empty;
             WriteEmail.Text = string.Empty;
@@ -290,7 +262,6 @@ namespace Lab5__WPF_application
             if (UserList.SelectedIndex >= 0)
             {
                
-
                 var selected = UserList.SelectedItem; // sparar vad man har valt så det inte försvinner när man tar bort det.
                 UserList.Items.RemoveAt(UserList.SelectedIndex); 
                 AdminList.Items.Add(selected); 
@@ -316,7 +287,7 @@ namespace Lab5__WPF_application
 
         private void WriteUserName_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(WriteUserName.Text.Contains("Write username"))
+            if(WriteUserName.Text.Contains("Write username here"))
             WriteUserName.Clear();
         }
 
@@ -337,7 +308,6 @@ namespace Lab5__WPF_application
             if (e.Key == Key.Tab) { 
                 WriteEmail.Clear();
                 
-           
                 }
             if (e.Key == Key.Enter && AddUserButton.IsEnabled == true)
                 AddUserButton_Click(sender, e);
@@ -349,6 +319,20 @@ namespace Lab5__WPF_application
             WriteUserName.Clear();
             WriteEmail.Clear();
             WriteUserName.Focus();
+        }
+
+        private void UserList_PreviewMouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            UserList.SelectedItem = null;
+            WriteUserName.Clear();
+            WriteEmail.Clear();
+        }
+
+        private void AdminList_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            AdminList.SelectedItem = null;
+            WriteUserName.Clear();
+            WriteEmail.Clear();
         }
     } 
     }
