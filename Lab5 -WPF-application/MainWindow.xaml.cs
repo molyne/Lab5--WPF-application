@@ -129,11 +129,11 @@ namespace Lab5__WPF_application
             
             // isPossibletoClick?
 
-                bool canClick = UserList.SelectedIndex >= 0;
+                bool UserListSelected = UserList.SelectedIndex >= 0;
 
-            DeleteUserButton.IsEnabled = canClick;
-            ChangeToAdminButton.IsEnabled = canClick;
-            UpdateUserButton.IsEnabled = canClick;
+            DeleteUserButton.IsEnabled = UserListSelected;
+            ChangeToAdminButton.IsEnabled = UserListSelected;
+            UpdateUserButton.IsEnabled = UserListSelected;
         }
 
         private void AdminList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,10 +159,10 @@ namespace Lab5__WPF_application
 
             // samma bool igen..? metod med inparameter?
 
-            bool canClick = AdminList.SelectedIndex >= 0;
-            ChangeToUser.IsEnabled = canClick;
-            DeleteUserButton.IsEnabled = canClick;
-            UpdateUserButton.IsEnabled = canClick;
+            bool AdminListSelected = AdminList.SelectedIndex >= 0;
+            ChangeToUser.IsEnabled = AdminListSelected;
+            DeleteUserButton.IsEnabled = AdminListSelected;
+            UpdateUserButton.IsEnabled = AdminListSelected;
            
         }
 
