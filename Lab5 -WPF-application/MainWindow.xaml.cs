@@ -323,14 +323,16 @@ namespace Lab5__WPF_application
 
         private void UserList_PreviewMouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            UserList.SelectedItem = null;
+            UserList.UnselectAll();
+            AdminList.UnselectAll();
             WriteUserName.Clear();
             WriteEmail.Clear();
         }
 
         private void AdminList_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AdminList.SelectedItem = null;
+            AdminList.UnselectAll();
+            UserList.UnselectAll();
             WriteUserName.Clear();
             WriteEmail.Clear();
         }
